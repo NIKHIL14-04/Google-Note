@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+   
+<p id="india"></p>
+
+<script>
+
+fetch('https://api.covid19api.com/summary')
+.then((mydata)=>{
+
+   // console.log(mydata);
+   return mydata.json()
+})
+.then((actualdata)=>{
+
+   console.log( actualdata.Countries[76]);
+
+ const data = actualdata.Countries[76];
+ 
+ const my =document.getElementById('india');
+
+ my.innerHTML=` today date is --${data.Date}
+ <br>
+ this is my countery name -${data.Country}
+ <br>
+ 
+ thats is all over india case -${data.TotalConfirmed}
+<br>
+ thats is all over death case is - ${data.TotalDeaths}
+ `
+
+ 
+
+})
+.catch((error)=>{
+
+   console.log( error );
+})
+</script>
+</body>
+</html>

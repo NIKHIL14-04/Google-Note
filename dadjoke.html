@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dad-Joke-api</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;background-color:brown;
+        box-sizing: border-box;
+    }
+    .container {
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-top: 20vh;
+    
+
+    }
+    
+
+h3 {
+    font-size: 5vh;
+    text-align: center;
+    text-transform: capitalize;
+    color: aliceblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+button.btn {
+    display: flex;
+    margin: auto;
+    margin-top: 20vh;
+    font-size: 2vh;
+    font-weight: 800;
+    color: white;
+    background-color: darkcyan;
+    width: 7vw;
+    justify-content: center;
+    height: 5vh;
+    align-items: center;
+    border-radius: 7px;
+    box-shadow: darkslategrey;
+}
+
+div#headingg {
+    text-align: center;
+    font-size: 5vh;
+    color: antiquewhite;
+    width: 50vw;
+    margin: auto;
+    margin-top: 10vh;
+}
+</style>
+<body>
+<div class="container">
+    <h3>aswome joke is here</h3>
+    <div class="heading" id="headingg"></div>
+    <button class="btn" id="btnn">More-Joke</button>
+</div>
+<script>
+    const Jokebtn = document.getElementById('btnn');
+    const joke = document.getElementById('headingg');
+
+    const genratejoke = () => {
+        fetch('https://api.chucknorris.io/jokes/random').then((res)=>{
+            // console.log(res);
+
+            return res.json();
+        })
+        .then((actualdata)=>{
+        //    console.log( actualdata.value);
+
+           joke.innerHTML =`${actualdata.value}`;
+        
+        //    joke.innerHTML =`${my.value}`;
+        })
+        .catch((error)=>{
+            console.log(error);
+        })
+    }
+
+    Jokebtn.addEventListener('click',genratejoke);
+        genratejoke();
+    
+
+    
+</script>    
+</body>
+</html>
